@@ -1,0 +1,26 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" ngNativeValidate>
+  <label for="name" class="input-title">Название города</label>
+  <input type="text" name="name" id="name" ngModel required class="city-name" />
+
+  <label for="description" class="input-title">Описание города</label>
+  <textarea
+    type="text"
+    name="description"
+    id="description"
+    ngModel
+    required
+    class="city-description"
+  ></textarea>
+
+  <label for="image" class="input-title">Ссылка на картинку</label>
+  <input
+    type="text"
+    name="image"
+    id="image"
+    ngModel
+    required
+    class="city-image"
+  />
+
+  <button class="btn-create">Создать</button>
+</form>

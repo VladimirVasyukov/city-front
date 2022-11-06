@@ -1,0 +1,7 @@
+.star {
+  all: unset;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  background-size: cover;
+}

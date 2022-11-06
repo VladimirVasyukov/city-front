@@ -1,0 +1,10 @@
+<div class="list-item">
+  <img src="{{city.image}}" alt="{{city.name}}" class="image" />
+  <div class="info">
+    <div class="name-wrapper">
+      <h3 class="name">{{city.name}}</h3>
+      <app-favorite [city]="city"></app-favorite>
+    </div>
+    <p class="description">{{city.description}}</p>
+  </div>
+</div>

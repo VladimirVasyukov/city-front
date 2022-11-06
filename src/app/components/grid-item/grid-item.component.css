@@ -1,0 +1,45 @@
+.tile {
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+  max-height: 320px;
+  margin-right: 16px;
+  margin-bottom: 20px;
+}
+
+.tile:hover {
+  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+}
+
+.image {
+  width: 320px;
+  height: 188px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.name-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.info {
+  min-height: 112px;
+  background-color: #f2f5fa;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.name {
+  font-size: 16px;
+  min-height: 28px;
+  margin: 18px 14px 12px 20px;
+  color: #434652;
+}
+
+.description {
+  margin-top: 10px;
+  font-size: 14px;
+  margin: -8px 20px;
+  color: #757986;
+}

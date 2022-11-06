@@ -1,0 +1,4 @@
+<button class="star" (click)="toggleFavorite()">
+  <img *ngIf="!this.city.favorite" src="../../assets/favorite-false.svg" />
+  <img *ngIf="this.city.favorite" src="../../assets/favorite-true.svg" />
+</button>
