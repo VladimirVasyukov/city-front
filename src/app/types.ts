@@ -7,3 +7,5 @@ export interface City {
 }
 
 export type View = 'list' | 'grid' | 'edit';
+
+export type CityForm = Omit<City, 'id' | 'favorite'>;

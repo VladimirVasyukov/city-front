@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { City } from './types';
+import { City, CityForm } from './types';
 import { View } from './types';
 
 @Component({
@@ -8,7 +8,7 @@ import { View } from './types';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  private allCities = [
+  private defaultCities = [
     {
       id: 0,
       image: 'https://screenshots.enkod.tech/ilya_novikovG6KIVEp3v160xCMY.png',
@@ -61,10 +61,42 @@ export class AppComponent {
     },
   ];
 
-  totalCities = this.allCities.length;
-
   get cities() {
     return this.allCities;
+  }
+
+  private initCities() {
+    try {
+      const cities = JSON.parse(localStorage.getItem('cities') || '');
+      return Array.isArray(cities) ? cities : this.defaultCities;
+    } catch {
+      return this.defaultCities;
+    }
+  }
+
+  private allCities = this.initCities();
+
+  private addCity(city: City) {
+    this.allCities.unshift(city);
+  }
+
+  private saveCities() {
+    localStorage.setItem('cities', JSON.stringify(this.allCities));
+  }
+
+  editCity(city: Partial<City>) {
+    this.allCities = this.allCities.map((c) => {
+      if (c.id === city.id) {
+        return { ...c, ...city };
+      }
+      return c;
+    });
+    this.saveCities();
+  }
+
+  createCity(cityForm: CityForm) {
+    this.changeView(this.prevView || 'list');
+    this.addCity({ ...cityForm, id: this.allCities.length, favorite: false });
   }
 
   view: View = 'list';
@@ -85,10 +117,5 @@ export class AppComponent {
 
   toggleCreateView() {
     this.changeView('edit');
-  }
-
-  addNewCity(city: City) {
-    this.changeView(this.prevView || 'list');
-    this.allCities.unshift(city);
   }
 }

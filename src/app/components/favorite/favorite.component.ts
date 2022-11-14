@@ -1,15 +1,14 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { City } from '../../types';
-
 @Component({
   selector: 'app-favorite',
   templateUrl: './favorite.component.html',
   styleUrls: ['./favorite.component.css'],
 })
 export class FavoriteComponent {
-  @Input() city!: City;
+  @Input() value!: boolean;
+  @Output() onChange = new EventEmitter<boolean>();
 
-  toggleFavorite() {
-    this.city.favorite = !this.city.favorite;
+  onClick() {
+    this.onChange.emit(!this.value);
   }
 }

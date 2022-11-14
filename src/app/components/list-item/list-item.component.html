@@ -3,7 +3,7 @@
   <div class="info">
     <div class="name-wrapper">
       <h3 class="name">{{city.name}}</h3>
-      <app-favorite [city]="city"></app-favorite>
+      <app-favorite (onChange)="onFavorite($event)" [value]="city.favorite"></app-favorite>
     </div>
     <p class="description">{{city.description}}</p>
   </div>

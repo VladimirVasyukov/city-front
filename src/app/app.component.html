@@ -1,7 +1,7 @@
 <header class="header">
   <div class="content header-content">
-    <h1 *ngIf="this.view === 'list' || this.view === 'grid'">Список городов</h1>
-    <h1 *ngIf="this.view === 'edit'">Создание города</h1>
+    <h1 *ngIf="view === 'list' || view === 'grid'">Список городов</h1>
+    <h1 *ngIf="view === 'edit'">Создание города</h1>
   </div>
 </header>
 
@@ -9,23 +9,23 @@
   <div class="btn-wrapper">
     <div>
       <button
-        *ngIf="this.view === 'list' || this.view === 'grid'"
+        *ngIf="view === 'list' || view === 'grid'"
         class="btn-primary"
-        [ngClass]="{ active: this.view === 'grid' }"
+        [ngClass]="{ active: view === 'grid' }"
         (click)="toggleListView()"
       >
         Список
       </button>
       <button
-        *ngIf="this.view === 'list' || this.view === 'grid'"
+        *ngIf="view === 'list' || view === 'grid'"
         class="btn-primary"
-        [ngClass]="{ active: this.view === 'list' }"
+        [ngClass]="{ active: view === 'list' }"
         (click)="toggleTileView()"
       >
         Плитка
       </button>
       <button
-        *ngIf="this.view === 'edit'"
+        *ngIf="view === 'edit'"
         class="btn-back"
         (click)="toggleListView()"
       >
@@ -33,7 +33,7 @@
       </button>
     </div>
     <button
-      *ngIf="this.view === 'list' || this.view === 'grid'"
+      *ngIf="view === 'list' || view === 'grid'"
       class="btn-create"
       (click)="toggleCreateView()"
     >
@@ -41,20 +41,20 @@
     </button>
   </div>
   <div class="main">
-    <ul *ngIf="this.view === 'list'">
+    <ul *ngIf="view === 'list'">
       <li *ngFor="let i of cities">
-        <app-list-item [city]="i"></app-list-item>
+        <app-list-item (onChange)="editCity($event)" [city]="i"></app-list-item>
       </li>
     </ul>
 
-    <ul class="grid-view" *ngIf="this.view === 'grid'">
+    <ul class="grid-view" *ngIf="view === 'grid'">
       <li *ngFor="let i of cities">
-        <app-grid-item [city]="i"></app-grid-item>
+        <app-grid-item (onChange)="editCity($event)" [city]="i"></app-grid-item>
       </li>
     </ul>
 
-    <div *ngIf="this.view === 'edit'">
-      <app-edit-form (add)="addNewCity($event)"></app-edit-form>
+    <div *ngIf="view === 'edit'">
+      <app-edit-form (add)="createCity($event)"></app-edit-form>
     </div>
   </div>
 </main>

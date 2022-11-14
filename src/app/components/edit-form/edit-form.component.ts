@@ -1,12 +1,6 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  NgModule,
-} from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { City } from '../../types';
+import { CityForm } from '../../types';
 
 @Component({
   selector: 'app-edit-form',
@@ -14,16 +8,13 @@ import { City } from '../../types';
   styleUrls: ['./edit-form.component.css'],
 })
 export class EditFormComponent {
-  @Input() totalCities!: number;
-  @Output() add = new EventEmitter<City>();
+  @Output() add = new EventEmitter<CityForm>();
 
   onSubmit(f: NgForm) {
     const cityObject = {
-      id: this.totalCities,
       image: f.value.image,
       name: f.value.name,
       description: f.value.description,
-      favorite: false,
     };
 
     this.add.emit(cityObject);
