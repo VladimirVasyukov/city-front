@@ -76,15 +76,11 @@ export class AppComponent {
 
   private allCities = this.initCities();
 
-  private addCity(city: City) {
-    this.allCities.unshift(city);
-  }
-
   private saveCities() {
     localStorage.setItem('cities', JSON.stringify(this.allCities));
   }
 
-  editCity(city: Partial<City>) {
+  editCity(city: City) {
     this.allCities = this.allCities.map((c) => {
       if (c.id === city.id) {
         return { ...c, ...city };
@@ -96,7 +92,8 @@ export class AppComponent {
 
   createCity(cityForm: CityForm) {
     this.changeView(this.prevView || 'list');
-    this.addCity({ ...cityForm, id: this.allCities.length, favorite: false });
+    this.allCities.unshift({ ...cityForm, id: this.allCities.length, favorite: false });
+    this.saveCities();
   }
 
   view: View = 'list';

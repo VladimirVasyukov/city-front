@@ -8,7 +8,7 @@ import { City } from '../../types';
 })
 export class ListItemComponent {
   @Input() city!: City;
-  @Output() onChange = new EventEmitter<Partial<City>>();
+  @Output() onChange = new EventEmitter<City>();
 
   onFavorite(favorite: boolean) {
     this.onChange.emit({ ...this.city, favorite });
