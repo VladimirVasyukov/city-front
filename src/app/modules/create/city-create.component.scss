@@ -1,9 +1,45 @@
+.btn-back {
+  display: flex;
+  width: 97px;
+  height: 36px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #434652;
+  background-color: #ffffff;
+  border: 1px solid #c4c7d1;
+}
+
+.btn-back::before {
+  content: "";
+  position: relative;
+  left: -6px;
+  width: 15px;
+  height: 15px;
+  background: url(../../../assets/vector-back.svg) 0 / 100% no-repeat;
+}
+
 input,
 textarea {
   padding: 5px;
   line-height: 24px;
   min-width: 534px;
   border: 1px solid#D3D4DB;
+
+  &.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+
+  &.ng-valid.ng-touched {
+    border: 1px solid green;
+  }
+}
+
+.validation {
+  color: red;
 }
 
 .input-title {
@@ -39,4 +75,8 @@ textarea {
   cursor: pointer;
   color: #ffffff;
   background: #21a5b9;
+}
+
+.opacity {
+  opacity: 0.5;
 }

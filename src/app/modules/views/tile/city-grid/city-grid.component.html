@@ -1,0 +1,22 @@
+<div class="card">
+  <img src="{{city.image}}"
+       alt="{{ city.name }}"
+       class="card__image" />
+  <div class="card__info">
+    <div class="card__name-wrapper">
+      <h3 class="card__name">{{city.name}}</h3>
+      <app-favorite [value]="city.favorite"
+                    (onChange)="onFavorite($event)">
+      </app-favorite>
+      <div class="card__actions">
+        <button [routerLink]="['/edit', city.id]"
+                class="card__actions edit">
+        </button>
+        <button class="card__actions delete"
+                (click)="deleteCity.emit(city.id)">
+        </button>
+      </div>
+    </div>
+    <p class="card__description">{{city.description}}</p>
+  </div>
+</div>

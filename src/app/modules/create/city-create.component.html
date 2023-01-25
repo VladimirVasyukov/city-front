@@ -1,0 +1,53 @@
+<button type="button"
+        class="btn-back"
+        routerLink="">
+  Назад
+</button>
+
+<form [formGroup]="form"
+      (ngSubmit)="addCity()">
+  <label for="name"
+         class="input-title">Название города</label>
+  <input type="text"
+         id="name"
+         class="city-name"
+         formControlName="cityName" />
+  <div class="validation"
+       *ngIf="cityNameValidation">
+    <small *ngIf="cityNameValidationMessage">
+      {{CITY_NAME_INPUT_WARN_MESSAGE}}
+    </small>
+  </div>
+
+  <label for="description"
+         class="input-title">Описание города</label>
+  <textarea id="description"
+            class="city-description"
+            formControlName="cityDescription"></textarea>
+  <div class="validation"
+       *ngIf="cityDescriptionValidation">
+    <small *ngIf="cityDescriptionValidationMessage">
+      {{CITY_DESCRIPTION_INPUT_WARN_MESSAGE}}
+    </small>
+  </div>
+
+  <label for="image"
+         class="input-title">Ссылка на картинку</label>
+  <input type="text"
+         id="image"
+         class="city-image"
+         formControlName="cityImage" />
+  <div class="validation"
+       *ngIf="cityImageValidation">
+    <small *ngIf="cityImageValidationMessage">
+      {{CITY_IMAGE_INPUT_WARN_MESSAGE}}
+    </small>
+  </div>
+
+  <button type="submit"
+          class="btn-create"
+          [ngClass]="{opacity: form.invalid}"
+          [disabled]="form.invalid">
+    {{title['title'] === TITLE ? CREATE : SAVE}}
+  </button>
+</form>
